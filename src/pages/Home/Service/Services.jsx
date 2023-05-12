@@ -11,9 +11,8 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="mt-4">
-      <div className="text-center">
-        <h3 className="text-2xl font-bold text-orange-600">Our Services</h3>
+    <div className="mt-8">
+      <div className="text-center space-y-3">
         <h2 className="text-5xl">Our Service Area</h2>
         <p>
           the majority have suffered alteration in some form, by injected

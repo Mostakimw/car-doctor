@@ -1,5 +1,7 @@
 import { FaArrowRight } from "react-icons/fa";
+// eslint-disable-next-line react/prop-types
 const ServiceCard = ({ service }) => {
+  // eslint-disable-next-line react/prop-types
   const { title, img, price } = service;
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
