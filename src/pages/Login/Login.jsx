@@ -1,9 +1,28 @@
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { user, signIn, signOutUser } = useContext(AuthContext);
   const handleLogin = (event) => {
-    event.prevenetDefault();
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.name.value;
+    console.log(email, password);
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleLogout = () => {
+    signOutUser();
   };
 
   return (
@@ -14,6 +33,11 @@ const Login = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
+            {user && (
+              <button onClick={handleLogout} className="btn btn-outline">
+                SignOut
+              </button>
+            )}
             <h1 className="text-3xl text-center font-bold">Login now!</h1>
             <form onSubmit={handleLogin}>
               <div className="form-control">
