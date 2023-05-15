@@ -36,7 +36,7 @@ const Checkout = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        alert("booking successful");
       });
   };
 

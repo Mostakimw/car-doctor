@@ -16,9 +16,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -47,7 +45,7 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="password"
                   name="password"
                   className="input input-bordered"
