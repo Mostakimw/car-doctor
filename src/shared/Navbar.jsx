@@ -1,5 +1,12 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 const Navbar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+  const handleLogout = () => {
+    signOutUser();
+  };
   return (
     <div>
       <div className="navbar bg-base-100 max-w-7xl mx-auto">
@@ -26,7 +33,9 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Home</a>
+                <Link to="/">
+                  <button>Home</button>
+                </Link>
               </li>
               <li>
                 <a>About</a>
@@ -36,18 +45,35 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <img src={logo} alt="" className="max-sm:w-10" />
+          <Link to="/">
+            <img src={logo} alt="" className="max-sm:w-10" />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Home</a>
+              <Link to="/">
+                <button>Home</button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/booking">
+                <button>My Booking</button>
+              </Link>
             </li>
             <li>
               <a>About</a>
             </li>
             <li>
-              <a>Services</a>
+              {user ? (
+                <button onClick={handleLogout} className="btn btn-outline">
+                  SignOut
+                </button>
+              ) : (
+                <Link to="/login">
+                  <button>Login</button>
+                </Link>
+              )}
             </li>
           </ul>
         </div>
