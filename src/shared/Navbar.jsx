@@ -6,6 +6,7 @@ const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const handleLogout = () => {
     signOutUser();
+    localStorage.removeItem("car-access-token");
   };
   return (
     <div>
